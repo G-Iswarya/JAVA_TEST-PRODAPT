@@ -6,7 +6,7 @@ public class Q4_stepstoDestination {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int i,j,max=0, maxi=0;
+		int i,j,maxindex=0, maxi=0;
 		Scanner sc = new Scanner(System.in);
 		int len = sc.nextInt();
 		int count=0;
@@ -16,16 +16,23 @@ public class Q4_stepstoDestination {
 			arr[i] = sc.nextInt();
 		}
 		i = 0;
-		{ max = 0;
-			for(j=i;j<arr[i];j++)
+		while(i<arr.length-1)
+		{ 
+		maxi = 0;
+		if(i+arr[i]>=len)
+		{
+		    count++;
+		    break;
+		}
+		for(j=i+1;j<=i+arr[i];j++)
+		{
+			if(maxi<arr[j])
 			{
-				if(max<arr[j])
-				{
-					max = arr[j];
-				}
+			    maxi = arr[j];
+			    maxindex = j;
 			}
-			i+=max;
-			count++;
-
-	}
+		} 
+		i = maxindex;
+		count++;
+		}
 		System.out.println(count);}}
